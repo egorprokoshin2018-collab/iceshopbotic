@@ -20,7 +20,7 @@ BOT_TOKEN = "9227073224:AAHckxwD2-CFWho-_TELuysoEDXXg7cy9h4"             # св�
 ADMIN_ID = 8915050007                       # твой Telegram ID
 CHANNEL = "https://t.me/iceshop29"          # ссылка на канал
 WEBAPP_URL = "https://egorprokoshin2018-collab.github.io/iceshop/"
-MANAGER_URL = "https://t.me/manager_ice_shop"
+MANAGER_URL = "https://t.me/iceshopreviews"
 
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
@@ -264,12 +264,12 @@ async def order_done(cb: CallbackQuery, state: FSMContext):
         print("ОШИБКА ЗАКРЫТИЯ ДИАЛОГА:", e)
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="⭐ Оставить отзыв менеджеру", url=MANAGER_URL)],
+        [InlineKeyboardButton(text="⭐ Оставить отзыв", url=MANAGER_URL)],
     ])
     try:
         await bot.send_message(uid,
                                f"🎉 Заказ #{oid} выдан! Спасибо за покупку!\n"
-                               "Будем рады вашему отзыву — напишите нашему менеджеру:",
+                               "Будем рады вашему отзыву:",
                                reply_markup=kb)
         print("УВЕДОМЛЕНИЕ О ВЫДАЧЕ ОТПРАВЛЕНО")
     except Exception as e:
@@ -380,3 +380,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
